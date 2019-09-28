@@ -1,5 +1,4 @@
-VALID_CHOICES = %w(rock paper scissors lizard spock)
-OTHER_VALID_CHOICES = %w(r p sc l sp)
+VALID_CHOICES = %w(rock paper scissors lizard spock r p sc l sp)
 WINNING = {
   'rock' => %w[scissors lizard],
   'scissors' => %w[paper lizard],
@@ -8,9 +7,26 @@ WINNING = {
   'spock' => %w[scissors rock]
 }
 PLAY_AGAIN = %w(y yes n no)
+GAMES_TO_WIN = 5
 
 def prompt(message)
   puts "=> #{message}"
+end
+
+def convert_choice(a_choice)
+  converted_choice = {
+    "r" => "rock",
+    "p" => "paper",
+    "sc" => "scissors",
+    "l" => "lizard",
+    "sp" => "spock",
+    "rock" => "rock",
+    "paper" => "paper",
+    "scissors" => "scissors",
+    "lizard" => "lizard",
+    "spock" => "spock"
+  }
+  converted_choice[a_choice]
 end
 
 def win?(first, second)
@@ -27,6 +43,12 @@ def display_results(user, computer)
   end
 end
 
+def match_ended?(user_score, comp_score)
+  user_score == GAMES_TO_WIN || comp_score == GAMES_TO_WIN
+end
+
+prompt("Welcome to RPSLS. First to 5 becomes the grand champion!")
+
 loop do
   user_score = 0
   comp_score = 0
@@ -35,12 +57,10 @@ loop do
   loop do
     choice = ''
     loop do
-      prompt("Choose one: #{VALID_CHOICES.join(', ')} or " \
-       "#{OTHER_VALID_CHOICES.join(', ')}")
+      prompt("Choose one: #{VALID_CHOICES.join(', ')}")
       choice = gets.chomp.downcase
 
-      if VALID_CHOICES.include?(choice) ||
-         OTHER_VALID_CHOICES.include?(choice)
+      if VALID_CHOICES.include?(choice)
         break
       else
         prompt("That's not a valid choice.")
@@ -48,27 +68,17 @@ loop do
     end
 
     computer_choice = VALID_CHOICES.sample
-    converted_choice = {
-      "r" => "rock",
-      "p" => "paper",
-      "sc" => "scissors",
-      "l" => "lizard",
-      "sp" => "spock",
-      "rock" => "rock",
-      "paper" => "paper",
-      "scissors" => "scissors",
-      "lizard" => "lizard",
-      "spock" => "spock"
-    }
+    converted_user = convert_choice(choice)
+    converted_com = convert_choice(computer_choice)
 
-    prompt("You chose: #{converted_choice[choice]};" \
-      " Computer chose: #{computer_choice}")
+    prompt("You chose: #{converted_user};" \
+      " Computer chose: #{converted_com}")
 
-    display_results(converted_choice[choice], computer_choice)
+    display_results(converted_user, converted_com)
 
-    if win?(converted_choice[choice], computer_choice)
+    if win?(converted_user, converted_com)
       user_score += 1
-    elsif win?(computer_choice, converted_choice[choice])
+    elsif win?(converted_com, converted_user)
       comp_score += 1
     else
       tie_score += 1
@@ -76,10 +86,12 @@ loop do
     prompt("The score is: #{user_score} to #{comp_score} with" \
        " #{tie_score} ties!")
 
-    break if user_score == 5 || comp_score == 5
+    break if match_ended?(user_score, comp_score)
   end
 
-  if user_score == 5
+  system('clear')
+
+  if user_score == GAMES_TO_WIN
     prompt("Congrats! You are the RPSLS grand winner!")
   else
     prompt("The computer is the winner, sorry!")
