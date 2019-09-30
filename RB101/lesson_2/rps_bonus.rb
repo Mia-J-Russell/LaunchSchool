@@ -56,6 +56,7 @@ loop do
 
   loop do
     choice = ''
+
     loop do
       prompt("Choose one: #{VALID_CHOICES.join(', ')}")
       choice = gets.chomp.downcase

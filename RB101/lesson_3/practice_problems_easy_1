@@ -1,0 +1,24 @@
+1) [1, 2, 2, 3]
+
+2) != is not [1 != 2]
+  prints the opposite of the boolean equivalent
+  the method usually becomes destructive
+  part of the method
+  used in the ternary operator for if...else
+  prints the boolean equivalent
+
+3) advice.gsub!("important", "urgent")
+
+4) numbers = [1, 3, 4, 5]
+  numbers = [2, 3, 4, 5]
+
+5) (10..100).cover?(42)
+
+6) "Four score and " << famous_words
+  "Four score and " + famous_words
+
+7) #didn't really get this one, plugged into irb got 42
+
+8) flintstones.flatten!
+
+9) Barney_info = flinstones.assoc("Barney")

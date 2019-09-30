@@ -1,0 +1,19 @@
+1)
+
+2)
+
+3) my_string = "pumpkins" (+= creates a new string object)
+  my_array = ["pumpkins", "rutabaga"] (adds the element to the array)
+
+4) my_string = "pumpkinsrutabaga"
+  my_array = ["pumpkins"]
+
+5) We could rename the method so it's
+  clear to understand what's happening in it.
+  maybe to def add_rutabaga
+  (or the way that's shown, making the
+  method non destructive and assigning it to a new variable)
+
+6) def color_valid(color)
+    color == "blue" || color == "green"
+   end

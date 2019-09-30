@@ -1,0 +1,25 @@
+1) ages.has_key?("Spot")
+  ages.include?("Spot")
+  ages.member?("Spot")
+
+2) monsters_description.swapcase!
+  monsters_description.capitalize!
+  monsters_description.downcase!
+  monsters_description.upcase!
+
+3) ages.merge!(additonal_ages)
+
+4) advice.match?("Dino")
+
+5) flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+
+6) flintstones << "Dino"
+
+7) flintstones.push("Dino").push("Hoppy")
+
+8) #did not get this one at first
+  advice.slice!(0, advice.index("house")
+
+9) statement.count("t")
+
+10) title.center(40)

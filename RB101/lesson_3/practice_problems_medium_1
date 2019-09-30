@@ -1,0 +1,27 @@
+1) 10.times {|number| puts (" " * number) + "The Flintstones Rock!"}
+
+2) puts "the value of 40 + 2 is #{40 + 2}"
+  puts "the value of 40 + 2 is" (40 + 2).to_s
+
+3) while divisor > 0 do
+     factors << number / divisor if number % divisor == 0
+     divisor -= 1
+   end
+  checks if remainder is 0 after the division
+  returns factors
+
+4) the first method changes buffer
+  the second buffer does not
+
+5) the problem is because limit isn't in the method
+  def fib(first_num, second_num, limits)
+
+  result = fib(0, 1, limit)
+
+6) 34
+
+7) yes.
+
+8) paper
+
+9) no
