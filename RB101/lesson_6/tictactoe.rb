@@ -1,5 +1,5 @@
 require 'pry'
-require 'pry-byebug'
+
 
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'

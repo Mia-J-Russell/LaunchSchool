@@ -1,3 +1,5 @@
+require 'pry'
+
 VALID_CHOICES = %w(rock paper scissors lizard spock r p sc l sp)
 WINNING = {
   'rock' => %w[scissors lizard],
@@ -25,6 +27,7 @@ choice = ''
       prompt("That's not a valid choice.")
     end
   end
+choice
 end
 
 def convert_choice(a_choice)
@@ -44,7 +47,7 @@ def convert_choice(a_choice)
 end
 
 def win?(first, second)
-  WINNING.has_key?(first) == WINNING.value?(second)
+  WINNING[first].include?(second)
 end
 
 def display_results(user, computer)
@@ -71,12 +74,12 @@ loop do
   loop do
     choices = get_move_choice
 
-    computer_choice = VALID_CHOICES.sample
+    computer_choice = VALID_CHOICES.to_a.sample
     converted_user = convert_choice(choices)
     converted_com = convert_choice(computer_choice)
+    binding.pry
 
-    prompt("You chose: #{converted_user};" \
-      " Computer chose: #{converted_com}")
+    prompt("You chose: #{converted_user}; Computer chose: #{converted_com}")
 
     display_results(converted_user, converted_com)
 
