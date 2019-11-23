@@ -77,7 +77,6 @@ loop do
     computer_choice = VALID_CHOICES.to_a.sample
     converted_user = convert_choice(choices)
     converted_com = convert_choice(computer_choice)
-    binding.pry
 
     prompt("You chose: #{converted_user}; Computer chose: #{converted_com}")
 
