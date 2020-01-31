@@ -2,6 +2,8 @@ require 'pry'
 
 SUITS = %w(H S C D)
 VALUES = %w(2 3 4 5 6 7 8 9 10 J Q K A)
+WINS = 5
+TWENTYONE = 21
 
 def prompt(message)
   puts "=> #{message}"
@@ -26,22 +28,22 @@ def total(cards)
   end
 
   values.select { |value| value == 'A' }.count.times do
-    sum -= 10 if sum > 21
+    sum -= 10 if sum > TWENTYONE
   end
   sum
 end
 
 def busted?(cards)
-  total(cards) > 21
+  total(cards) > TWENTYONE
 end
 
 def display_result(dealer_cards, players_cards)
   player_total = total(players_cards)
   dealer_total = total(dealer_cards)
 
-  if player_total > 21
+  if player_total > TWENTYONE
     :dealer
-  elsif dealer_total > 21
+  elsif dealer_total > TWENTYONE
     :player
   elsif dealer_total < player_total
     :player
@@ -52,6 +54,28 @@ def display_result(dealer_cards, players_cards)
   end
 end
 
+def dealer_turn(dealer_cards, deck)
+  puts '==================================='
+  prompt "Dealer's turn..."
+  prompt "Dealer's cards are: #{dealer_cards}"
+
+  loop do
+    break if total(dealer_cards) >= 17
+
+    prompt 'Dealer hits!'
+    dealer_cards << deck.pop
+    prompt "Dealer's cards are now: #{dealer_cards}"
+  end
+
+  if busted?(dealer_cards)
+    prompt "Dealer busted at #{total(dealer_cards)}"
+  else
+    prompt "Dealer stays at #{total(dealer_cards)}"
+  end
+  sleep 5
+  system 'clear'
+end
+
 def compare(dcards, pcards)
   puts '==================================='
   prompt "Dealer has #{dcards}, for a total of: #{total(dcards)}"
@@ -60,7 +84,7 @@ def compare(dcards, pcards)
 end
 
 def play_again?
-  puts '---------------'
+  puts '-----------------------------'
   answer = nil
   loop do
     prompt 'Do you want to play again? (y or n)'
@@ -73,13 +97,14 @@ def play_again?
   answer.downcase.start_with?('y')
 end
 
-player_score = 0
-dealer_score = 0
-ties = 0
-
+system 'clear'
 prompt 'Welcome to Twenty-One! First to five wins!'
 
 loop do
+  player_score = 0
+  dealer_score = 0
+  ties = 0
+
   loop do
     deck = initialize_deck
     player_cards = []
@@ -123,29 +148,19 @@ loop do
       prompt "You stayed at #{total(player_cards)}"
     end
 
-    puts '==================================='
-    prompt "Dealer's turn..."
+    sleep 3
+    system 'clear'
 
-    loop do
-      break if total(dealer_cards) >= 17
-
-      prompt 'Dealer hits!'
-      dealer_cards << deck.pop
-      prompt "Dealer's cards are now: #{dealer_cards}"
-    end
-
-    if busted?(dealer_cards)
-      prompt "Dealer busted at #{total(dealer_cards)}"
-    else
-      prompt "Dealer stays at #{total(dealer_cards)}"
-    end
+    dealer_turn(dealer_cards, deck) if busted?(player_cards) == false
 
     compare(dealer_cards, player_cards)
 
     display_result(dealer_cards, player_cards)
     if display_result(dealer_cards, player_cards) == :dealer
+      prompt "Dealer wins!"
       dealer_score += 1
     elsif display_result(dealer_cards, player_cards) == :player
+      prompt "Player wins!"
       player_score += 1
     else
       prompt "It's a tie!"
@@ -154,12 +169,13 @@ loop do
 
     sleep 6
     system 'clear'
-    break if dealer_score == 5 || player_score == 5
+    break if dealer_score == WINS || player_score == WINS
   end
 
   system 'clear'
-  prompt "The final score is #{player_score} to
-          #{dealer_score} with #{ties} ties."
+  prompt 'The final score is #{player_score} to' \
+         ' #{dealer_score} with #{ties} ties.'
+         binding.pry
   break unless play_again?
 end
 
