@@ -7,16 +7,15 @@ puts reverse_sentence('Hello World') == 'World Hello'
 puts reverse_sentence('Reverse these words') == 'words these Reverse'
 
 def reverse_words(string)
-  array = string.split(' ')
-  array2 = []
+  array = []
 
-  array.each do |str|
+  string.split(' ').each do |str|
     if str.length >= 5
       str.reverse!
     end
-    array2 << str
+    array << str
   end
-  array2.join(' ')
+  array.join(' ')
 end
 
 puts reverse_words('Professional')

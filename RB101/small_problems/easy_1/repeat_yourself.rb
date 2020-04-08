@@ -1,7 +1,5 @@
 def repeat(word, amount)
-  amount.times do
-    puts word
-  end
+  amount.times { puts word }
 end
 
 repeat('Hello', 3)

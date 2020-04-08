@@ -1,5 +1,5 @@
 def calculate_bonus(amount, bonus)
-  bonus ? amount/2 : 0
+  bonus ? amount / 2 : 0
 end
 
 puts calculate_bonus(2800, true) == 1400

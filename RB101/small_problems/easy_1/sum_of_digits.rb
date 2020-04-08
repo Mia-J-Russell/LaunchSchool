@@ -2,7 +2,7 @@ def sum(numbers)
   num = numbers.to_s.split('')
   sum = 0
   for n in num
-    sum = n.to_i + sum
+    sum += n.to_i
   end
   sum
 end
