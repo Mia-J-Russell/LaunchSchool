@@ -1,13 +1,28 @@
-counter = 99
+# counter = 99
+#
+# while counter > 0
+#   puts counter if counter % 2 == 1
+#   counter -= 1
+# end
+#
+# counter = 99
+#
+# while counter > 0
+#   puts counter if counter % 2 == 0
+#   counter -= 1
+# end
 
-while counter > 0
-  puts counter if counter % 2 == 1
-  counter -= 1
+#Further exploration
+array = (1..99).to_a
+
+odd = array.select do |x|
+  x.odd?
 end
 
-counter = 99
+puts odd
 
-while counter > 0
-  puts counter if counter % 2 == 0
-  counter -= 1
+even = array.select do |x|
+  x.even?
 end
+
+puts even

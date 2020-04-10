@@ -6,5 +6,5 @@ retire = gets.chomp.to_i
 
 agediff = retire - age
 
-puts "It's 2020. you will retire in #{2020 + agediff}"
+puts "It's #{Time.now.year}. you will retire in #{Time.now.year + agediff}"
 puts "only #{agediff} years left!"

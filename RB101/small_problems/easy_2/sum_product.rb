@@ -1,25 +1,33 @@
 def sum(num)
-  total = 0
-  original = num
+  # total = 0
+  # original = num
+  #
+  # while num > 0
+  #   total += num
+  #   num -= 1
+  # end
+  #
+  # puts "The sum of the numbers between 1 and #{original} is #{total}"
 
-  while num > 0
-    total = total + num
-    num -= 1
-  end
-
-  puts "The sum of the numbers between 1 and #{original} is #{total}"
+  #Further exploration
+  total = (1..num).inject { |sum, n| sum + n}
+  puts "The sum of the numbers between 1 and #{num} is #{total}"
 end
 
 def product(num)
-  total = 1
-  original = num
+  # total = 1
+  # original = num
+  #
+  # while num > 0
+  #   total *= num
+  #   num -= 1
+  # end
+  #
+  # puts "The product of the numbers between 1 and #{original} is #{total}"
 
-  while num > 0
-    total = total * num
-    num -= 1
-  end
-
-  puts "The product of the numbers between 1 and #{original} is #{total}"
+  #Further exploration
+  total = (1..num).inject { |product, n| product * n}
+  puts "The product of the numbers betwwen 1 and #{num} is #{total}"
 end
 
 puts "give me a number greater than 0"
