@@ -1,7 +1,25 @@
 def word_cap(string)
+  # array = string.split(' ')
+  # array.each do |x|
+  #   x.capitalize!
+  # end
+  # array.join(' ')
+
+  #string.split(' ').map {|x| x.capitalize!}.join(' ')
+
+  #Further Exploration
+  
+  # array = string.split(' ')
+  # array.each do |x|
+  #   x.downcase!
+  #   x[0] = x[0].upcase! unless x[0] =~ /[^a-zA-Z]/
+  # end
+  # array.join(' ')
+
   array = string.split(' ')
   array.each do |x|
-    x.capitalize!
+    x.downcase!
+    x[0] = x[0].swapcase! unless x[0] =~ /[^a-zA-Z]/
   end
   array.join(' ')
 end

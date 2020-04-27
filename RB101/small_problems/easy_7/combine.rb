@@ -1,13 +1,16 @@
 def interleave(array1, array2)
-  newarr = []
-  counter = 0
-  loop do
-    break if counter >= array1.size
-    newarr << array1[counter]
-    newarr << array2[counter]
-    counter += 1
-  end
-  newarr
+  # newarr = []
+  # counter = 0
+  # loop do
+  #   break if counter >= array1.size
+  #   newarr << array1[counter]
+  #   newarr << array2[counter]
+  #   counter += 1
+  # end
+  # newarr
+
+  #Further Exploration
+  array1.zip(array2).flatten
 end
 
 puts interleave([1, 2, 3], ['a', 'b', 'c'])
