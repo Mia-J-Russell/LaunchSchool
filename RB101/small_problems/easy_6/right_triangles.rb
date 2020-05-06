@@ -36,9 +36,6 @@ end
 
 #triangle(5)
 #triangle(9)
-
-#left_triangle(5)
-
-#upside_down_triangle(5)
-
-right_upside_down_triangle(5)
+left_triangle(5)
+#right_upside_down_triangle(5)
+upside_down_triangle(5)
