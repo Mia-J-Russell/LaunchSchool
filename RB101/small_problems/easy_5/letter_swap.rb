@@ -1,10 +1,11 @@
 def swap(string)
   newstr = string.split(' ')
   swap = newstr.each do |str|
-           first = str[0]
-           last = str[-1]
-           str[0] = last
-           str[-1] = first
+           # first = str[0]
+           # last = str[-1]
+           # str[0] = last
+           # str[-1] = first
+           str[0], str[-1] = str[-1], str[0]
          end
   swap.join(' ')
 end
