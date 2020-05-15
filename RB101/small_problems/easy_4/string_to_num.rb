@@ -30,7 +30,7 @@ def string_to_integer(string)
   newarr.inject{|a,i| a * 10 + i}
 end
 
-def string_to_signed_integer3(str)
+def string_to_signed_integer(str)
   new_string = string_to_integer(str.delete('-+'))
   str[0] == '-' ? -new_string : new_string
 end
