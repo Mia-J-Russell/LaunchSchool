@@ -1,10 +1,12 @@
 def include?(array, num)
 #  if array.count(num) == 1
+
 #  if array.index(num) != nil
 #    true
 #  else
 #    false
 #  end
+
 #  array.count(num) > 0 ? true : false
   array.index(num) != nil ? true : false
 end
