@@ -1,13 +1,20 @@
+#make a grid that is num x num
+#fill the middle of the first and last row with an *
+#fill the middle row completely with num *
+=begin
+| | | |*| | | |
+| | |*| |*| | |
+| |*| | | |*| |
+|*|*|*|*|*|*|*|
+| | | | | | | |
+| | | | | | | |
+| | | |*| | | |
+=end
 def diamond(num)
-  counter = 0
-
-  num.times do
-    stars = "*" * counter
-    puts " " + stars + " "
-    counter += 1
-  end
+  
 end
 
-diamond(3)
-diamond(1)
-diamond(9)
+#diamond(3)
+#diamond(1)
+diamond(5)
+#diamond(9)
